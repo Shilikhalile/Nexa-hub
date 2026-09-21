@@ -4,25 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
      SCROLL PROGRESS
   ========================================= */
 
-  const progressBar =
-    document.getElementById("progressBar");
+  const progress =
+    document.getElementById("progress");
 
   function updateProgress() {
 
     const scrollTop =
       window.scrollY;
 
-    const documentHeight =
+    const maxScroll =
       document.documentElement.scrollHeight -
       window.innerHeight;
 
-    const progress =
-      documentHeight > 0
-        ? (scrollTop / documentHeight) * 100
+    const value =
+      maxScroll > 0
+        ? (scrollTop / maxScroll) * 100
         : 0;
 
-    progressBar.style.width =
-      `${progress}%`;
+    progress.style.width =
+      `${value}%`;
   }
 
   window.addEventListener(
@@ -43,39 +43,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let toastTimer;
 
-  function showToast(message) {
+  function showToast(text) {
 
-    toast.textContent = message;
+    toast.textContent = text;
 
     toast.classList.add("show");
 
     clearTimeout(toastTimer);
 
     toastTimer = setTimeout(() => {
+
       toast.classList.remove("show");
-    }, 2600);
+
+    }, 2500);
   }
 
 
   /* =========================================
-     DISCOVER BUTTON
+     EXPLORE
   ========================================= */
 
-  const discoverBtn =
-    document.getElementById("discoverBtn");
+  const exploreBtn =
+    document.getElementById("exploreBtn");
 
-  if (discoverBtn) {
+  if (exploreBtn) {
 
-    discoverBtn.addEventListener(
+    exploreBtn.addEventListener(
       "click",
       () => {
 
-        const target =
-          document.querySelector(".core");
+        const reveal =
+          document.querySelector(".reveal");
 
-        if (target) {
+        if (reveal) {
 
-          target.scrollIntoView({
+          reveal.scrollIntoView({
             behavior: "smooth"
           });
 
@@ -88,14 +90,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================
-     COMING SOON BUTTONS
+     COMING SOON
   ========================================= */
 
-  const comingSoonBtn =
-    document.getElementById("comingSoonBtn");
+  const comingBtn =
+    document.getElementById("comingBtn");
 
-  const finalBtn =
-    document.getElementById("finalBtn");
+  const finalButton =
+    document.getElementById("finalButton");
 
   function comingSoon() {
 
@@ -105,144 +107,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  if (comingSoonBtn) {
-    comingSoonBtn.addEventListener(
+  if (comingBtn) {
+
+    comingBtn.addEventListener(
       "click",
       comingSoon
     );
+
   }
 
-  if (finalBtn) {
-    finalBtn.addEventListener(
+  if (finalButton) {
+
+    finalButton.addEventListener(
       "click",
       comingSoon
     );
-  }
-
-
-  /* =========================================
-     CAPABILITY CARDS
-  ========================================= */
-
-  const cards =
-    document.querySelectorAll(
-      ".capability-card"
-    );
-
-  cards.forEach((card) => {
-
-    card.addEventListener(
-      "click",
-      () => {
-
-        cards.forEach((item) => {
-          item.style.transform = "";
-        });
-
-        card.style.transform =
-          "translateY(-12px)";
-
-        setTimeout(() => {
-          card.style.transform = "";
-        }, 900);
-
-      }
-    );
-
-  });
-
-
-  /* =========================================
-     LANGUAGE CARDS
-  ========================================= */
-
-  const languages =
-    document.querySelectorAll(
-      ".language-card"
-    );
-
-  languages.forEach((card) => {
-
-    card.addEventListener(
-      "click",
-      () => {
-
-        languages.forEach((item) => {
-          item.classList.remove("active");
-        });
-
-        card.classList.add("active");
-
-      }
-    );
-
-  });
-
-
-  /* =========================================
-     TERMINAL TYPING EFFECT
-  ========================================= */
-
-  const terminal =
-    document.querySelector(
-      ".terminal-body"
-    );
-
-  if (terminal) {
-
-    const lines =
-      terminal.querySelectorAll("p");
-
-    lines.forEach(
-      (line, index) => {
-
-        line.style.opacity = "0";
-
-        setTimeout(() => {
-
-          line.style.transition =
-            "opacity .5s ease";
-
-          line.style.opacity = "1";
-
-        }, 500 + index * 450);
-
-      }
-    );
 
   }
 
 
   /* =========================================
-     INTERSECTION OBSERVER
+     REVEAL ANIMATION
   ========================================= */
 
-  const sections =
+  const animatedSections =
     document.querySelectorAll(
       ".section"
     );
+
+  animatedSections.forEach((section) => {
+
+    section.style.opacity = "0";
+
+    section.style.transform =
+      "translateY(35px)";
+
+    section.style.transition =
+      "opacity .9s ease, transform .9s ease";
+
+  });
+
 
   const observer =
     new IntersectionObserver(
       (entries) => {
 
-        entries.forEach(
-          (entry) => {
+        entries.forEach((entry) => {
 
-            if (
-              entry.isIntersecting
-            ) {
+          if (entry.isIntersecting) {
 
-              entry.target.style.opacity =
-                "1";
+            entry.target.style.opacity =
+              "1";
 
-              entry.target.style.transform =
-                "translateY(0)";
-
-            }
+            entry.target.style.transform =
+              "translateY(0)";
 
           }
-        );
+
+        });
 
       },
       {
@@ -250,28 +172,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
 
-  sections.forEach((section) => {
 
-    section.style.opacity = "0";
-
-    section.style.transform =
-      "translateY(25px)";
-
-    section.style.transition =
-      "opacity .8s ease, transform .8s ease";
-
-    observer.observe(section);
-
-  });
+  animatedSections.forEach(
+    section => observer.observe(section)
+  );
 
 
   /* =========================================
-     MOUSE PARALLAX
+     CORE PARALLAX
   ========================================= */
 
   const core =
     document.querySelector(
-      ".ai-core"
+      ".nexa-core"
     );
 
   if (
@@ -281,19 +194,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ).matches
   ) {
 
-    document.addEventListener(
+    window.addEventListener(
       "mousemove",
       (event) => {
 
         const x =
           (event.clientX /
             window.innerWidth -
-            0.5) * 12;
+            .5) * 15;
 
         const y =
           (event.clientY /
             window.innerHeight -
-            0.5) * 12;
+            .5) * 15;
 
         core.style.transform =
           `translate(${x}px, ${y}px)`;
@@ -305,17 +218,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================
-     CHAT INPUT FAKE INTERACTION
+     TOOL CARDS
   ========================================= */
 
-  const chatInput =
+  document
+    .querySelectorAll(".tool-card")
+    .forEach((card) => {
+
+      card.addEventListener(
+        "click",
+        () => {
+
+          card.style.transform =
+            "translateY(-10px)";
+
+          setTimeout(() => {
+
+            card.style.transform = "";
+
+          }, 600);
+
+        }
+      );
+
+    });
+
+
+  /* =========================================
+     CREATION STEPS
+  ========================================= */
+
+  document
+    .querySelectorAll(".creation-step")
+    .forEach((step) => {
+
+      step.addEventListener(
+        "click",
+        () => {
+
+          document
+            .querySelectorAll(".creation-step")
+            .forEach(item =>
+              item.classList.remove("active")
+            );
+
+          step.classList.add("active");
+
+        }
+      );
+
+    });
+
+
+  /* =========================================
+     FAKE CHAT
+  ========================================= */
+
+  const fakeInput =
     document.querySelector(
-      ".chat-input"
+      ".fake-input"
     );
 
-  if (chatInput) {
+  if (fakeInput) {
 
-    chatInput.addEventListener(
+    fakeInput.addEventListener(
       "click",
       () => {
 
@@ -327,5 +293,53 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
   }
+
+
+  /* =========================================
+     TERMINAL
+  ========================================= */
+
+  const terminalLines =
+    document.querySelectorAll(
+      ".terminal-body p"
+    );
+
+  terminalLines.forEach(
+    (line, index) => {
+
+      line.style.opacity = "0";
+
+      setTimeout(() => {
+
+        line.style.transition =
+          "opacity .5s ease";
+
+        line.style.opacity = "1";
+
+      }, 500 + index * 500);
+
+    }
+  );
+
+
+  /* =========================================
+     KEYBOARD SHORTCUT
+  ========================================= */
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (event.key === "Escape") {
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+  );
 
 });
