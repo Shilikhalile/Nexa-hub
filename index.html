@@ -1,249 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <title>NEXA V100 — One AI. Many Possibilities.</title>
 
-    <title>NEXA — One AI. Many possibilities.</title>
+  <meta
+    name="description"
+    content="NEXA — One AI. Many possibilities."
+  />
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<main class="video">
-
-    <!-- =========================
-         BACKGROUND
-    ========================== -->
-
-    <div class="background"></div>
-
+  <!-- Background -->
+  <div class="background">
     <div class="grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+  <!-- Top Progress -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-mark">N</span>
+      <span>NEXA</span>
+    </div>
+
+    <div class="version">
+      V100
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-badge">
+        <span class="pulse"></span>
+        THE NEXT AI EXPERIENCE
+      </div>
+
+      <h1>
+        ONE AI.<br />
+        <span>MANY POSSIBILITIES.</span>
+      </h1>
+
+      <p class="hero-ar">
+        ذكاء اصطناعي واحد.<br />
+        إمكانيات بلا حدود.
+      </p>
+
+      <p class="hero-description">
+        Stop switching between AI tools.
+        Think, create, analyze and build from one intelligent workspace.
+      </p>
+
+      <div class="hero-actions">
+        <button class="primary-btn" id="discoverBtn">
+          DISCOVER NEXA
+          <span>→</span>
+        </button>
+
+        <button class="secondary-btn" id="comingSoonBtn">
+          COMING SOON
+        </button>
+      </div>
+
+      <div class="scroll-indicator">
+        <span></span>
+        SCROLL TO EXPLORE
+      </div>
+
+    </section>
 
 
-    <!-- =========================
-         SCENE 1 — HOOK
-    ========================== -->
+    <!-- QUESTION -->
+    <section class="question section">
 
-    <section class="scene scene1 active">
+      <div class="section-label">
+        01 / THE PROBLEM
+      </div>
 
-        <div class="eyebrow">
-            INTRODUCING
+      <h2>
+        WHY USE
+        <span>10 AI TOOLS?</span>
+      </h2>
+
+      <p class="arabic-title">
+        لماذا تستخدم عشر أدوات للذكاء الاصطناعي؟
+      </p>
+
+      <div class="problem-line">
+        <div>SEARCH</div>
+        <div>CHAT</div>
+        <div>IMAGE</div>
+        <div>VIDEO</div>
+        <div>ANALYSIS</div>
+      </div>
+
+      <div class="answer">
+        <span>ONE</span>
+        <strong>WORKSPACE.</strong>
+      </div>
+
+    </section>
+
+
+    <!-- AI CORE -->
+    <section class="core section">
+
+      <div class="section-label">
+        02 / THE CORE
+      </div>
+
+      <div class="core-layout">
+
+        <div class="core-text">
+
+          <div class="core-tag">
+            NEXA INTELLIGENCE
+          </div>
+
+          <h2>
+            UNDERSTAND.<br />
+            THINK.<br />
+            <span>CREATE.</span>
+          </h2>
+
+          <p>
+            NEXA is designed around your ideas.
+            Give it a goal, a question or a concept —
+            and turn that idea into action.
+          </p>
+
+          <p class="arabic">
+            افهم فكرتك.<br />
+            حلّلها.<br />
+            وحوّلها إلى نتيجة.
+          </p>
+
         </div>
 
-        <div class="logo">
+        <div class="ai-core">
+
+          <div class="core-ring ring-1"></div>
+          <div class="core-ring ring-2"></div>
+          <div class="core-ring ring-3"></div>
+
+          <div class="core-center">
+            <span>N</span>
+          </div>
+
+          <div class="orbit orbit-1">CHAT</div>
+          <div class="orbit orbit-2">IMAGE</div>
+          <div class="orbit orbit-3">VIDEO</div>
+          <div class="orbit orbit-4">IDEAS</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CHAT DEMO -->
+    <section class="demo section">
+
+      <div class="section-label">
+        03 / INTERACTION
+      </div>
+
+      <div class="demo-header">
+
+        <div>
+          <h2>
+            JUST <span>ASK.</span>
+          </h2>
+
+          <p class="arabic-title">
+            فقط اطرح فكرتك.
+          </p>
+        </div>
+
+        <div class="status">
+          <span></span>
+          NEXA ONLINE
+        </div>
+
+      </div>
+
+
+      <div class="chat-window">
+
+        <div class="chat-top">
+          <div class="chat-brand">
             NEXA
+          </div>
+
+          <div class="chat-status">
+            ● ACTIVE
+          </div>
         </div>
 
-        <h1>
-            ONE AI.<br>
-            <span>MANY POSSIBILITIES.</span>
-        </h1>
+        <div class="chat-body">
 
-        <p class="subtitle">
-            What if one AI could understand you...
+          <div class="message user-message">
+            <span class="message-label">
+              YOU
+            </span>
+
+            <p>
+              Explain this idea and help me turn it into a project.
+            </p>
+          </div>
+
+          <div class="message ai-message">
+
+            <span class="message-label">
+              NEXA
+            </span>
+
+            <p>
+              Let's break it down into clear steps, identify
+              the required tools, and build the solution.
+            </p>
+
+            <div class="ai-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="chat-input">
+          <span>Type your idea...</span>
+          <button>↑</button>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MULTILINGUAL -->
+    <section class="language section">
+
+      <div class="section-label">
+        04 / YOUR LANGUAGE
+      </div>
+
+      <h2>
+        SPEAK
+        <span>NATURALLY.</span>
+      </h2>
+
+      <p class="arabic-title">
+        تحدث بلغتك بشكل طبيعي.
+      </p>
+
+      <div class="language-wall">
+
+        <div class="language-card active">
+          <strong>EN</strong>
+          <span>English</span>
+        </div>
+
+        <div class="language-card">
+          <strong>ع</strong>
+          <span>العربية</span>
+        </div>
+
+        <div class="language-card">
+          <strong>FR</strong>
+          <span>Français</span>
+        </div>
+
+        <div class="language-card">
+          <strong>+</strong>
+          <span>More languages</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CAPABILITIES -->
+    <section class="capabilities section">
+
+      <div class="section-label">
+        05 / POSSIBILITIES
+      </div>
+
+      <h2>
+        YOUR IDEA.
+        <span>YOUR CREATION.</span>
+      </h2>
+
+      <p class="arabic-title">
+        فكرتك تتحول إلى واقع.
+      </p>
+
+      <div class="capability-grid">
+
+        <article class="capability-card">
+
+          <div class="card-number">
+            01
+          </div>
+
+          <div class="card-icon">
+            ◉
+          </div>
+
+          <h3>CHAT</h3>
+
+          <p>
+            Ask questions.
+            Explore ideas.
+            Solve problems.
+          </p>
+
+          <p class="card-ar">
+            اسأل، ناقش، وحلّ المشاكل.
+          </p>
+
+        </article>
+
+
+        <article class="capability-card">
+
+          <div class="card-number">
+            02
+          </div>
+
+          <div class="card-icon">
+            ◇
+          </div>
+
+          <h3>IMAGE</h3>
+
+          <p>
+            Turn your imagination
+            into visual concepts.
+          </p>
+
+          <p class="card-ar">
+            حوّل خيالك إلى صور.
+          </p>
+
+        </article>
+
+
+        <article class="capability-card">
+
+          <div class="card-number">
+            03
+          </div>
+
+          <div class="card-icon">
+            ▶
+          </div>
+
+          <h3>VIDEO</h3>
+
+          <p>
+            Transform ideas into
+            dynamic visual stories.
+          </p>
+
+          <p class="card-ar">
+            حوّل أفكارك إلى فيديو.
+          </p>
+
+        </article>
+
+
+        <article class="capability-card">
+
+          <div class="card-number">
+            04
+          </div>
+
+          <div class="card-icon">
+            ∞
+          </div>
+
+          <h3>CREATE</h3>
+
+          <p>
+            Build, experiment and
+            create without limits.
+          </p>
+
+          <p class="card-ar">
+            أنشئ وجرّب بلا حدود.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- TERMINAL -->
+    <section class="terminal-section section">
+
+      <div class="section-label">
+        06 / THE FUTURE
+      </div>
+
+      <div class="terminal">
+
+        <div class="terminal-header">
+
+          <div class="terminal-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div>
+            NEXA_CORE
+          </div>
+
+          <div>
+            V100
+          </div>
+
+        </div>
+
+
+        <div class="terminal-body">
+
+          <p>
+            <span class="terminal-green">></span>
+            INITIALIZING NEXA...
+          </p>
+
+          <p>
+            <span class="terminal-green">></span>
+            UNDERSTANDING USER INTENT...
+          </p>
+
+          <p>
+            <span class="terminal-green">></span>
+            ANALYZING REQUEST...
+          </p>
+
+          <p>
+            <span class="terminal-green">></span>
+            BUILDING RESPONSE...
+          </p>
+
+          <p>
+            <span class="terminal-green">></span>
+            <strong>READY.</strong>
+          </p>
+
+          <div class="terminal-cursor"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="final section">
+
+      <div class="final-glow"></div>
+
+      <div class="final-content">
+
+        <div class="final-small">
+          THE FUTURE OF AI
+        </div>
+
+        <h2>
+          NEXA
+        </h2>
+
+        <div class="final-line"></div>
+
+        <p class="final-main">
+          ONE AI.<br />
+          MANY POSSIBILITIES.
         </p>
 
-        <div class="typing">
-            no matter how you speak.
-            <span class="cursor">_</span>
-        </div>
+        <p class="final-ar">
+          ذكاء اصطناعي واحد.<br />
+          إمكانيات بلا حدود.
+        </p>
+
+        <button class="final-btn" id="finalBtn">
+          NEXA IS COMING
+          <span>→</span>
+        </button>
+
+      </div>
 
     </section>
 
-
-    <!-- =========================
-         SCENE 2 — LANGUAGE
-    ========================== -->
-
-    <section class="scene scene2">
-
-        <div class="scene-number">
-            01 / UNIVERSAL UNDERSTANDING
-        </div>
-
-        <h2>
-            Speak naturally.
-        </h2>
-
-        <div class="languages">
-
-            <div class="language">
-                🇹🇳
-                <span>Tounsi / Arabizi</span>
-            </div>
-
-            <div class="language">
-                🇦🇪
-                <span>العربية</span>
-            </div>
-
-            <div class="language">
-                🇫🇷
-                <span>Français</span>
-            </div>
-
-            <div class="language">
-                🇬🇧
-                <span>English</span>
-            </div>
-
-        </div>
-
-        <div class="mixed-message">
-            "5arejli taswira ta3 kalb fi jbal"
-        </div>
-
-        <div class="understood">
-            ✓ NEXA understands the meaning.
-        </div>
-
-    </section>
+  </main>
 
 
-    <!-- =========================
-         SCENE 3 — INTELLIGENCE
-    ========================== -->
+  <footer>
 
-    <section class="scene scene3">
+    <div>
+      NEXA
+    </div>
 
-        <div class="scene-number">
-            02 / THE INTELLIGENCE
-        </div>
+    <div>
+      ONE AI. MANY POSSIBILITIES.
+    </div>
 
-        <h2>
-            It doesn't just match words.
-        </h2>
+    <div>
+      V100
+    </div>
 
-        <div class="pipeline">
-
-            <div class="node">
-                <small>USER</small>
-                <strong>REQUEST</strong>
-            </div>
-
-            <div class="arrow">→</div>
-
-            <div class="node active-node">
-                <small>NEXA</small>
-                <strong>UNDERSTAND</strong>
-            </div>
-
-            <div class="arrow">→</div>
-
-            <div class="node">
-                <small>INTENT</small>
-                <strong>PLAN</strong>
-            </div>
-
-            <div class="arrow">→</div>
-
-            <div class="node">
-                <small>TOOL</small>
-                <strong>EXECUTE</strong>
-            </div>
-
-        </div>
-
-        <div class="result">
-            RESULT
-        </div>
-
-    </section>
+  </footer>
 
 
-    <!-- =========================
-         SCENE 4 — AI HUB
-    ========================== -->
+  <div class="toast" id="toast">
+    NEXA — COMING SOON
+  </div>
 
-    <section class="scene scene4">
+  <script src="script.js"></script>
 
-        <div class="scene-number">
-            03 / ONE AI HUB
-        </div>
-
-        <h2>
-            One interface.<br>
-            <span>Many workflows.</span>
-        </h2>
-
-        <div class="tools">
-
-            <div class="tool">
-                <b>✦</b>
-                <span>CHAT</span>
-            </div>
-
-            <div class="tool">
-                <b>◈</b>
-                <span>IMAGE</span>
-            </div>
-
-            <div class="tool">
-                <b>▶</b>
-                <span>VIDEO</span>
-            </div>
-
-            <div class="tool">
-                <b>&lt;/&gt;</b>
-                <span>CODE</span>
-            </div>
-
-            <div class="tool">
-                <b>⌁</b>
-                <span>LIVE DATA</span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         SCENE 5 — EXAMPLES
-    ========================== -->
-
-    <section class="scene scene5">
-
-        <div class="scene-number">
-            04 / JUST ASK
-        </div>
-
-        <div class="request request-1">
-            <span>YOU</span>
-            فسرلي التضخم
-        </div>
-
-        <div class="request request-2">
-            <span>YOU</span>
-            5arejli taswira ta3 kalb
-        </div>
-
-        <div class="request request-3">
-            <span>YOU</span>
-            a3tini prix bitcoin tawa
-        </div>
-
-        <div class="request request-4">
-            <span>YOU</span>
-            اكتبلي موقع لشركة فلاحية
-        </div>
-
-        <div class="center-message">
-            NEXA
-            <small>chooses the right workflow.</small>
-        </div>
-
-    </section>
-
-
-    <!-- ==============
+</body>
+      </html>
