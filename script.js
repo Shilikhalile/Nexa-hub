@@ -1,263 +1,331 @@
-// ==========================================
-// NEXA — AI HUB TIKTOK ENGINE
-// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================================
+     SCROLL PROGRESS
+  ========================================= */
+
+  const progressBar =
+    document.getElementById("progressBar");
+
+  function updateProgress() {
+
+    const scrollTop =
+      window.scrollY;
+
+    const documentHeight =
+      document.documentElement.scrollHeight -
+      window.innerHeight;
+
+    const progress =
+      documentHeight > 0
+        ? (scrollTop / documentHeight) * 100
+        : 0;
+
+    progressBar.style.width =
+      `${progress}%`;
+  }
+
+  window.addEventListener(
+    "scroll",
+    updateProgress,
+    { passive: true }
+  );
+
+  updateProgress();
 
 
-// ------------------------------------------
-// ELEMENTS
-// ------------------------------------------
+  /* =========================================
+     TOAST
+  ========================================= */
 
-const scenes =
-    document.querySelectorAll(".scene");
+  const toast =
+    document.getElementById("toast");
 
-const progressBar =
-    document.querySelector(".progress-bar");
+  let toastTimer;
 
-const exportBtn =
-    document.querySelector("#exportBtn");
+  function showToast(message) {
 
-const exportStatus =
-    document.querySelector("#exportStatus");
+    toast.textContent = message;
 
+    toast.classList.add("show");
 
-// ------------------------------------------
-// VIDEO SETTINGS
-// ------------------------------------------
+    clearTimeout(toastTimer);
 
-const SCENE_DURATION = 5000;
-
-const TOTAL_DURATION =
-    scenes.length * SCENE_DURATION;
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2600);
+  }
 
 
-// ------------------------------------------
-// STATE
-// ------------------------------------------
+  /* =========================================
+     DISCOVER BUTTON
+  ========================================= */
 
-let currentScene = 0;
+  const discoverBtn =
+    document.getElementById("discoverBtn");
 
-let playbackTimer = null;
+  if (discoverBtn) {
 
+    discoverBtn.addEventListener(
+      "click",
+      () => {
 
-// ------------------------------------------
-// SHOW SCENE
-// ------------------------------------------
+        const target =
+          document.querySelector(".core");
 
-function showScene(index) {
+        if (target) {
 
-    scenes.forEach(scene => {
+          target.scrollIntoView({
+            behavior: "smooth"
+          });
 
-        scene.classList.remove("active");
-
-    });
-
-    scenes[index].classList.add("active");
-}
-
-
-// ------------------------------------------
-// NORMAL PLAYBACK
-// ------------------------------------------
-
-function startVideo() {
-
-    currentScene = 0;
-
-    showScene(0);
-
-    clearInterval(playbackTimer);
-
-
-    playbackTimer =
-        setInterval(() => {
-
-            currentScene++;
-
-            if (
-                currentScene >=
-                scenes.length
-            ) {
-
-                currentScene = 0;
-            }
-
-            showScene(currentScene);
-
-        }, SCENE_DURATION);
-}
-
-
-// Start preview
-startVideo();
-
-
-// ==========================================
-// EXPORT PLAYBACK
-// ==========================================
-
-function playForExport() {
-
-    const start =
-        performance.now();
-
-
-    function frame(time) {
-
-        const elapsed =
-            time - start;
-
-
-        // ------------------------------
-        // Scene
-        // ------------------------------
-
-        const sceneIndex =
-            Math.floor(
-                elapsed /
-                SCENE_DURATION
-            );
-
-
-        if (
-            sceneIndex <
-                scenes.length &&
-            sceneIndex !==
-                currentScene
-        ) {
-
-            currentScene =
-                sceneIndex;
-
-            showScene(
-                currentScene
-            );
         }
 
+      }
+    );
 
-        // ------------------------------
-        // Progress
-        // ------------------------------
-
-        const progress =
-            Math.min(
-                elapsed /
-                TOTAL_DURATION,
-                1
-            );
+  }
 
 
-        progressBar.style.width =
-            `${progress * 100}%`;
+  /* =========================================
+     COMING SOON BUTTONS
+  ========================================= */
+
+  const comingSoonBtn =
+    document.getElementById("comingSoonBtn");
+
+  const finalBtn =
+    document.getElementById("finalBtn");
+
+  function comingSoon() {
+
+    showToast(
+      "NEXA — COMING SOON"
+    );
+
+  }
+
+  if (comingSoonBtn) {
+    comingSoonBtn.addEventListener(
+      "click",
+      comingSoon
+    );
+  }
+
+  if (finalBtn) {
+    finalBtn.addEventListener(
+      "click",
+      comingSoon
+    );
+  }
 
 
-        // ------------------------------
-        // Continue
-        // ------------------------------
+  /* =========================================
+     CAPABILITY CARDS
+  ========================================= */
 
-        if (
-            elapsed <
-            TOTAL_DURATION
-        ) {
+  const cards =
+    document.querySelectorAll(
+      ".capability-card"
+    );
 
-            requestAnimationFrame(
-                frame
-            );
+  cards.forEach((card) => {
 
-        } else {
+    card.addEventListener(
+      "click",
+      () => {
 
-            progressBar.style.width =
-                "100%";
-        }
-    }
+        cards.forEach((item) => {
+          item.style.transform = "";
+        });
 
+        card.style.transform =
+          "translateY(-12px)";
 
-    requestAnimationFrame(frame);
-}
+        setTimeout(() => {
+          card.style.transform = "";
+        }, 900);
 
+      }
+    );
 
-// ==========================================
-// EXPORT WEBM
-// ==========================================
-
-exportBtn.addEventListener(
-    "click",
-    async () => {
-
-        try {
-
-            // --------------------------------
-            // Stop normal preview
-            // --------------------------------
-
-            clearInterval(
-                playbackTimer
-            );
+  });
 
 
-            currentScene = 0;
+  /* =========================================
+     LANGUAGE CARDS
+  ========================================= */
 
-            showScene(0);
+  const languages =
+    document.querySelectorAll(
+      ".language-card"
+    );
 
-            progressBar.style.width =
-                "0%";
+  languages.forEach((card) => {
 
+    card.addEventListener(
+      "click",
+      () => {
 
-            exportBtn.textContent =
-                "SELECT TAB";
+        languages.forEach((item) => {
+          item.classList.remove("active");
+        });
 
+        card.classList.add("active");
 
-            exportStatus.textContent =
-                "Choose this browser tab";
+      }
+    );
 
-
-            // --------------------------------
-            // Capture browser tab
-            // --------------------------------
-
-            const stream =
-                await navigator
-                    .mediaDevices
-                    .getDisplayMedia({
-
-                        video: {
-
-                            frameRate: 30,
-
-                            width: {
-                                ideal: 1080
-                            },
-
-                            height: {
-                                ideal: 1920
-                            }
-                        },
-
-                        audio: false
-                    });
+  });
 
 
-            // --------------------------------
-            // Pick WebM codec
-            // --------------------------------
+  /* =========================================
+     TERMINAL TYPING EFFECT
+  ========================================= */
 
-            let mimeType =
-                "video/webm;codecs=vp9";
+  const terminal =
+    document.querySelector(
+      ".terminal-body"
+    );
 
+  if (terminal) {
+
+    const lines =
+      terminal.querySelectorAll("p");
+
+    lines.forEach(
+      (line, index) => {
+
+        line.style.opacity = "0";
+
+        setTimeout(() => {
+
+          line.style.transition =
+            "opacity .5s ease";
+
+          line.style.opacity = "1";
+
+        }, 500 + index * 450);
+
+      }
+    );
+
+  }
+
+
+  /* =========================================
+     INTERSECTION OBSERVER
+  ========================================= */
+
+  const sections =
+    document.querySelectorAll(
+      ".section"
+    );
+
+  const observer =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(
+          (entry) => {
 
             if (
-                !MediaRecorder
-                    .isTypeSupported(
-                        mimeType
-                    )
+              entry.isIntersecting
             ) {
 
-                mimeType =
-                    "video/webm;codecs=vp8";
+              entry.target.style.opacity =
+                "1";
+
+              entry.target.style.transform =
+                "translateY(0)";
+
             }
 
+          }
+        );
 
-            if (
-                !MediaRecorder
-                    .isTypeSupported(
-                        mimeType
-              
+      },
+      {
+        threshold: 0.08
+      }
+    );
+
+  sections.forEach((section) => {
+
+    section.style.opacity = "0";
+
+    section.style.transform =
+      "translateY(25px)";
+
+    section.style.transition =
+      "opacity .8s ease, transform .8s ease";
+
+    observer.observe(section);
+
+  });
+
+
+  /* =========================================
+     MOUSE PARALLAX
+  ========================================= */
+
+  const core =
+    document.querySelector(
+      ".ai-core"
+    );
+
+  if (
+    core &&
+    window.matchMedia(
+      "(pointer:fine)"
+    ).matches
+  ) {
+
+    document.addEventListener(
+      "mousemove",
+      (event) => {
+
+        const x =
+          (event.clientX /
+            window.innerWidth -
+            0.5) * 12;
+
+        const y =
+          (event.clientY /
+            window.innerHeight -
+            0.5) * 12;
+
+        core.style.transform =
+          `translate(${x}px, ${y}px)`;
+
+      }
+    );
+
+  }
+
+
+  /* =========================================
+     CHAT INPUT FAKE INTERACTION
+  ========================================= */
+
+  const chatInput =
+    document.querySelector(
+      ".chat-input"
+    );
+
+  if (chatInput) {
+
+    chatInput.addEventListener(
+      "click",
+      () => {
+
+        showToast(
+          "NEXA CORE — COMING SOON"
+        );
+
+      }
+    );
+
+  }
+
+});
