@@ -100,4 +100,22 @@ document.addEventListener('DOMContentLoaded', () => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  const heroVisual = document.querySelector('.hero-visual');
+  const workspaceCard = document.querySelector('.workspace-card');
+  if (heroVisual && workspaceCard && window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroVisual.addEventListener('pointermove', (event) => {
+      const bounds = heroVisual.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      workspaceCard.style.transform = `perspective(1200px) rotateY(${x * 12 - 4}deg) rotateX(${y * -8 + 3}deg) translateZ(10px)`;
+      heroVisual.style.setProperty('--pointer-x', `${x * 30}px`);
+      heroVisual.style.setProperty('--pointer-y', `${y * 30}px`);
+    });
+    heroVisual.addEventListener('pointerleave', () => {
+      workspaceCard.style.transform = '';
+      heroVisual.style.setProperty('--pointer-x', '0px');
+      heroVisual.style.setProperty('--pointer-y', '0px');
+    });
+  }
 });
