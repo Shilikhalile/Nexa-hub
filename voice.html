@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Nexa Voice — مساعدك الصوتي التونسي للتحكم في جهازك.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Nexa Voice — إحكي، ونكسا تتصرّف</title>
+</head>
+<body class="voice-page">
+  <div class="progress" id="progress"></div>
+  <header class="site-header voice-header">
+    <a class="brand" href="index.html" aria-label="Nexa-hub home"><span class="brand-mark">N</span><span>NEXA<span class="brand-dash">—</span>HUB</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Home</a><a class="active" href="voice.html">Nexa Voice</a><a href="product.html">Product</a><a href="process.html">How it works</a></nav>
+    <a class="button button-small button-outline header-cta" href="index.html">رجوع للموقع <span>↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false"><i></i><i></i></button>
+  </header>
+  <div class="mobile-nav" id="mobileNav"><a href="index.html">Home</a><a href="voice.html">Nexa Voice</a><a href="product.html">Product</a><a href="process.html">How it works</a></div>
+
+  <main>
+    <section class="voice-shell section-wrap">
+      <div class="voice-intro">
+        <p class="eyebrow"><span></span> مساعدك الصوتي التونسي</p>
+        <h1>إحكي،<br><em>ونكسا تتصرّف.</em></h1>
+        <p>قول الأمر بطريقتك — تونسي، عربي، Français ولا English. Nexa تفهم النية وتوريك شنوّة باش تعمل قبل التنفيذ.</p>
+        <div class="voice-chips" aria-label="اللغات المدعومة"><span>تونسي</span><span>العربية</span><span>Français</span><span>English</span></div>
+      </div>
+      <div class="voice-console" id="voiceConsole">
+        <div class="console-top"><div><span class="live-dot"></span><span id="assistantState">READY TO LISTEN</span></div><span class="console-id">NEXA / VOICE 01</span></div>
+        <div class="orb-stage" id="orbStage">
+          <div class="orb-orbit orbit-a"></div><div class="orb-orbit orbit-b"></div>
+          <button class="voice-orb" id="voiceOrb" aria-label="ابدأ الاستماع"><span class="orb-core">N</span><span class="orb-ripple"></span></button>
+        </div>
+        <div class="voice-prompt" id="voicePrompt">اضغط على الدائرة واحكي</div>
+        <div class="transcript" id="transcript" aria-live="polite">“شنوة تحبني نعمل؟”</div>
+        <div class="console-actions"><button class="button button-primary" id="demoButton">جرّب مثال <span>↗</span></button><button class="button button-ghost" id="clearButton">مسح</button></div>
+        <p class="voice-note" id="voiceNote">تجربة آمنة: الأوامر تتنفّذ داخل الـPrototype فقط.</p>
+      </div>
+    </section>
+
+    <section class="section-wrap voice-grid">
+      <div class="command-panel">
+        <div class="panel-heading"><div><p class="eyebrow"><span></span> Command brain</p><h2>شنوّة فهمت؟</h2></div><span class="confidence" id="confidence">—</span></div>
+        <div class="intent-card" id="intentCard"><div class="intent-icon">✦</div><div><small>WAITING FOR A COMMAND</small><strong id="intentTitle">جاهز نسمعك</strong><p id="intentDetail">جرّب: “قدّاش عندي بطارية؟” أو “اعمللي Timer عشرة دقايق”.</p></div></div>
+        <div class="suggestions"><button data-voice-command="قداش عندي بطارية؟">قداش البطارية؟</button><button data-voice-command="اعمللي timer عشرة دقايق">Timer 10 دقايق</button><button data-voice-command="احسب 250 في 4">احسب 250 × 4</button><button data-voice-command="اكتب note نراجع اقتصاد">احفظ Note</button></div>
+      </div>
+      <aside class="device-panel">
+        <div class="panel-heading"><div><p class="eyebrow"><span></span> Device pulse</p><h2>حالة الجهاز</h2></div><span class="system-ok">● OK</span></div>
+        <div class="device-stats"><div><span>Battery</span><strong>73<small>%</small></strong><i><b style="width:73%"></b></i></div><div><span>Storage</span><strong>41<small>%</small></strong><i><b style="width:41%"></b></i></div><div><span>RAM</span><strong>2.8<small> GB</small></strong><i><b style="width:62%"></b></i></div><div><span>Temperature</span><strong>Normal</strong><i><b style="width:28%"></b></i></div></div>
+      </aside>
+    </section>
+
+    <section class="section-wrap recent-section"><div class="panel-heading"><div><p class="eyebrow"><span></span> Recent commands</p><h2>آخر الحكايات</h2></div><span class="history-count" id="historyCount">0 commands</span></div><div class="recent-list" id="recentList"><div class="empty-history">مازال ما فما حتى أمر — ابدأ بأول تجربة.</div></div></section>
+  </main>
+  <footer class="site-footer section-wrap"><div><a class="brand" href="index.html"><span class="brand-mark">N</span><span>NEXA<span class="brand-dash">—</span>HUB</span></a><p>صوتك، أوامرك، جهازك.</p></div><div class="footer-bottom"><span>© <span data-year></span> Nexa-hub</span><span>Built for meaningful work.</span></div></footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js?v=voice-prototype-1"></script><script src="voice.js?v=voice-prototype-1"></script>
+</body>
+</html>
